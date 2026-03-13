@@ -1,43 +1,72 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Life Dashboard</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Life Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-    <body>
-        <h1 id="greeting"></h1>
-        <p id="clock"></p>
+    <div class="top-bar">
+        <div class="user-profile">
+            <input id="nameInput" placeholder="Enter name...">
+            <button onclick="saveName()">Save</button>
+        </div>
+        <button onclick="toggleTheme()" id="themeBtn" class="theme-toggle">🌙</button>
+    </div>
 
-        <hr>
-        
-        <h2>Focus Timer</h2>
-        <p id="timer">25:00</p>
+    <div class="dashboard">
+        <div class="card header">
+            <h1 id="clock">00:00:00</h1>
+            <p id="date">Monday, January 1, 2026</p>
+            <h2 id="greeting">Hello, User</h2>
+        </div>
 
-        <button onclick="startTimer()">Start</button>
-        <button onclick="stopTimer()">Stop</button>
-        <button onclick="resetTimer()">Reset</button>
+        <div class="grid">
+            <div class="card">
+                <h3>Focus Timer</h3>
+                <p id="timer">25:00</p>
+                
+                <div class="timer-settings">
+                    <select id="pomodoroSelect">
+                        <option value="1500">25 min</option>
+                        <option value="3000">50 min</option>
+                        <option value="600">10 min</option>
+                        <option value="custom">Custom...</option>
+                    </select>
+                    <input type="number" id="customInput" placeholder="Min">
+                </div>
 
-        <hr>
+                <div class="button-group">
+                    <button class="btn-start" onclick="startTimer()">Start</button>
+                    <button onclick="stopTimer()">Stop</button>
+                    <button class="btn-reset" onclick="resetTimer()">Reset</button>
+                </div>
+            </div>
 
-        <h2>To-Do List</h2>
+            <div class="card">
+                <h3>Tasks</h3>
+                <p id="taskCounter"></p>
+                <div class="input-group">
+                    <input id="taskInput" placeholder="Add a task...">
+                    <button onclick="addTask()">Add</button>
+                </div>
+                <ul id="taskList"></ul>
+            </div>
 
-        <input id="taskInput" placeholder="New task">
-        <button onclick="addTask()">Add</button>
+            <div class="card">
+                <h3>Quick Links</h3>
+                <div class="input-group-stack">
+                    <input id="linkName" placeholder="Link Name">
+                    <input id="linkURL" placeholder="URL (https://...)">
+                    <button onclick="addLink()" style="width: 100%;">Add Link</button>
+                </div>
+                <div id="linksContainer"></div>
+            </div>
+        </div>
+    </div>
 
-        <ul id="taskList"></ul>
-
-        <hr>
-
-        <h2>Quick Links</h2>
-
-        <input id="linkName" placeholder="Website name">
-        <input id="linkURL" placeholder="https://">
-        <button onclick="addLink()">Add Link</button>
-
-        <div id="linksContainer"></div>
-
-        <script src="script.js"></script>
-
-    </body>
+    <script src="js/script.js"></script>
+</body>
 </html>
